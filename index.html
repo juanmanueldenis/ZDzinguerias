@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Zinguerías y Techos ZD — Instalación y reparación de techos, canaletas y zinguerías en Buenos Aires. Presupuesto sin cargo." />
+  <title>Zinguerías y Techos ZD · Diego</title>
+  <link rel="stylesheet" href="styles.css?v=3" />
+  <script src="config.js?v=3"></script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand">D<span class="accent">Z</span></a>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#trabajos">Trabajos</a></li>
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-logo">D<span class="accent">Z</span></div>
+  <p class="hero-eyebrow">Zinguerías y Techos</p>
+  <h1>Zinguerías y Techos<br><em>con Garantía</em></h1>
+  <p class="hero-sub" id="hero-sub"><!-- completado por JS con CONFIG.slogan --></p>
+  <div class="hero-btns">
+    <a id="hero-wp" class="btn btn-wp" href="#">
+      💬 Consultá por WhatsApp
+    </a>
+    <a class="btn btn-outline" href="#contacto">
+      📋 Pedí tu presupuesto
+    </a>
+  </div>
+  <div class="hero-badges">
+    <div class="hero-badge"><strong>10+</strong><span>Años de experiencia</span></div>
+    <div class="hero-badge"><strong>100%</strong><span>Trabajo garantizado</span></div>
+    <div class="hero-badge"><strong>$0</strong><span>Presupuesto sin cargo</span></div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Lo que hacemos</span>
+      <h2 class="section-title">Nuestros <em>Servicios</em></h2>
+      <p class="section-sub">Soluciones completas para tu techo y desagüe</p>
+    </div>
+    <div class="services-grid" id="services-grid">
+      <!-- generado desde config.js → SERVICIOS -->
+    </div>
+  </div>
+</section>
+
+<!-- ANTES / DESPUÉS -->
+<section id="trabajos">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Resultados reales</span>
+      <h2 class="section-title">Nuestros <em>Trabajos</em></h2>
+      <p class="section-sub">Deslizá para ver el antes y después de cada trabajo</p>
+    </div>
+    <div class="gallery-grid" id="gallery-grid">
+      <!-- generado desde config.js → GALERIA -->
+    </div>
+  </div>
+</section>
+
+<!-- NOSOTROS -->
+<section id="nosotros">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Por qué elegirnos</span>
+      <h2 class="section-title">Experiencia y <em>Confianza</em></h2>
+      <p class="section-sub">Seriedad y calidad en cada trabajo</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">⭐</div>
+        <h4>Experiencia comprobada</h4>
+        <p>Años de trayectoria en el rubro con clientes satisfechos en toda la zona.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">📅</div>
+        <h4>Puntualidad</h4>
+        <p>Llegamos en la fecha acordada y cumplimos los plazos de entrega.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">💰</div>
+        <h4>Precios justos</h4>
+        <p>Presupuesto detallado sin sorpresas. Financiación disponible.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🔒</div>
+        <h4>Trabajo garantizado</h4>
+        <p>Garantía sobre materiales y mano de obra en todos los trabajos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Contacto</span>
+      <h2 class="section-title">Solicitá tu <em>Presupuesto</em></h2>
+      <p class="section-sub">Completá el formulario y te escribimos por WhatsApp</p>
+    </div>
+    <div class="form-card">
+      <form id="presupuesto-form">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="f-nombre">Nombre y Apellido *</label>
+            <input type="text" id="f-nombre" placeholder="Juan García" required />
+          </div>
+          <div class="form-group">
+            <label for="f-celular">Celular *</label>
+            <input type="tel" id="f-celular" placeholder="11 1234-5678" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="f-barrio">Barrio / Localidad *</label>
+            <input type="text" id="f-barrio" placeholder="Quilmes, Bs As" required />
+          </div>
+          <div class="form-group">
+            <label for="f-servicio">Servicio que necesitás *</label>
+            <select id="f-servicio" required>
+              <option value="" disabled selected>Seleccioná...</option>
+              <option>Techo - Instalación nueva</option>
+              <option>Techo - Reparación / Goteras</option>
+              <option>Canaletas - Instalación</option>
+              <option>Canaletas - Limpieza / Reparación</option>
+              <option>Zinguerías varias</option>
+              <option>Impermeabilización</option>
+              <option>Mantenimiento preventivo</option>
+              <option>Otro (lo describo abajo)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="f-desc">Descripción del trabajo</label>
+          <textarea id="f-desc" placeholder="Contanos más detalles: medidas aproximadas, tipo de techo, problema actual, etc."></textarea>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="f-urgencia">Urgencia</label>
+            <select id="f-urgencia">
+              <option>Sin urgencia</option>
+              <option>Esta semana</option>
+              <option>URGENTE</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="f-horario">Horario preferido de contacto</label>
+            <select id="f-horario">
+              <option>Mañana (8-15hs)</option>
+              <option>Tarde (15-18hs)</option>
+              <option>Tarde preuba</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-wp form-submit">
+          💬 Enviar solicitud por WhatsApp
+        </button>
+        <p class="form-note">Te responderemos a la brevedad · Presupuesto sin cargo</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">D<span class="accent">Z</span></div>
+  <p id="footer-empresa"></p>
+  <p style="margin-top:0.3rem">
+    <span id="footer-ciudad"></span> ·
+    <a id="footer-tel" href="#"></a> ·
+    <a id="footer-email" href="#"></a>
+  </p>
+  <p class="footer-copy">© <span id="footer-year"></span> · Todos los derechos reservados</p>
+</footer>
+
+<!-- BOTÓN FLOTANTE WP -->
+<a id="float-wp" class="wp-float" href="#" target="_blank" title="Escribinos por WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="28" height="28">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<script src="main.js?v=3"></script>
+</body>
+</html>
