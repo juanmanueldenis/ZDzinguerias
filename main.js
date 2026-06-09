@@ -2,6 +2,33 @@
 //  MAIN.JS — Lógica del sitio (no necesitás tocar esto)
 // ================================================================
 
+var ARGENTINA = {
+  "CABA": ["Agronomia","Almagro","Balvanera","Barracas","Belgrano","Boedo","Caballito","Chacarita","Coghlan","Colegiales","Constitucion","Flores","Floresta","La Boca","La Paternal","Liniers","Mataderos","Monte Castro","Montserrat","Nueva Pompeya","Nunez","Palermo","Parque Avellaneda","Parque Chacabuco","Parque Patricios","Puerto Madero","Recoleta","Retiro","Saavedra","San Cristobal","San Nicolas","San Telmo","Villa Crespo","Villa del Parque","Villa Devoto","Villa Lugano","Villa Luro","Villa Ortuzar","Villa Pueyrredon","Villa Soldati","Villa Urquiza"],
+  "Buenos Aires": ["Almirante Brown","Avellaneda","Azul","Bahia Blanca","Balcarce","Baradero","Berazategui","Berisso","Bolivar","Bragado","Campana","Canuelas","Chacabuco","Chascomus","Chivilcoy","Colon","Ensenada","Escobar","Esteban Echeverria","Exaltacion de la Cruz","Ezeiza","Florencio Varela","General Rodriguez","General San Martin","Hurlingham","Ituzaingo","Jose C. Paz","Junin","La Costa","La Matanza","La Plata","Lanus","Lobos","Lomas de Zamora","Lujan","Magdalena","Malvinas Argentinas","Mar del Plata","Marcos Paz","Mercedes","Merlo","Monte","Moreno","Moron","Navarro","Necochea","Olavarria","Pergamino","Pilar","Pinamar","Presidente Peron","Quilmes","Ramallo","Rojas","Saladillo","Salto","San Antonio de Areco","San Fernando","San Isidro","San Miguel","San Nicolas","San Pedro","San Vicente","Suipacha","Tandil","Tigre","Trenque Lauquen","Tres Arroyos","Tres de Febrero","Vicente Lopez","Villa Gesell","Zarate","25 de Mayo","9 de Julio"],
+  "Catamarca": ["San Fernando del Valle de Catamarca","Andalgala","Belen","Capayan","Fray Mamerto Esquiu","La Paz","Santa Maria","Tinogasta","Valle Viejo"],
+  "Chaco": ["Resistencia","Barranqueras","Fontana","Gral. San Martin","Saenz Pena","Villa Angela","Charata","Las Brenas","Quitilipi","Juan Jose Castelli"],
+  "Chubut": ["Rawson","Comodoro Rivadavia","Puerto Madryn","Trelew","Esquel","Rada Tilly","Sarmiento","Rio Mayo"],
+  "Cordoba": ["Cordoba","Alta Gracia","Bell Ville","Cosquin","Cruz del Eje","Dean Funes","Jesus Maria","La Calera","La Falda","Marcos Juarez","Rio Ceballos","Rio Cuarto","Rio Tercero","San Francisco","Villa Carlos Paz","Villa Dolores","Villa Maria"],
+  "Corrientes": ["Corrientes","Goya","Paso de los Libres","Mercedes","Curuzu Cuatia","Santo Tome","Bella Vista","Saladas","Ituzaingo"],
+  "Entre Rios": ["Parana","Concordia","Gualeguaychu","Gualeguay","Concepcion del Uruguay","Colon","Villaguay","La Paz","Federacion","San Salvador"],
+  "Formosa": ["Formosa","Clorinda","Pirane","El Colorado","Las Lomitas"],
+  "Jujuy": ["San Salvador de Jujuy","Palpala","San Pedro de Jujuy","Libertador Gral. San Martin","Humahuaca","La Quiaca","Tilcara","Perico"],
+  "La Pampa": ["Santa Rosa","General Pico","Toay","Eduardo Castex","Realico","General Acha"],
+  "La Rioja": ["La Rioja","Chilecito","Arauco","Chamical","Aimogasta"],
+  "Mendoza": ["Mendoza","Godoy Cruz","Las Heras","Guaymallen","Maipu","Lujan de Cuyo","San Martin","General Alvear","Malargue","San Rafael","Tunuyan","Tupungato"],
+  "Misiones": ["Posadas","Obera","Eldorado","Puerto Iguazu","Apostoles","Leandro N. Alem","Montecarlo","San Vicente","Jardin America"],
+  "Neuquen": ["Neuquen","Cutral Co","Plaza Huincul","Zapala","San Martin de los Andes","Villa La Angostura","Centenario","Plottier","Junin de los Andes"],
+  "Rio Negro": ["Viedma","Bariloche","General Roca","Cipolletti","Villa Regina","Allen","Catriel","Rio Colorado","El Bolson"],
+  "Salta": ["Salta","San Ramon de la Nueva Oran","Tartagal","General Guemes","Metan","Rosario de la Frontera","Cafayate"],
+  "San Juan": ["San Juan","Chimbas","Rawson","Rivadavia","Santa Lucia","Caucete","Pocito","Jachal","9 de Julio"],
+  "San Luis": ["San Luis","Villa Mercedes","Merlo","Justo Daract","Quines","La Toma","Concarán"],
+  "Santa Cruz": ["Rio Gallegos","Caleta Olivia","Pico Truncado","Las Heras","El Calafate","El Chalten","Perito Moreno","Los Antiguos","Puerto San Julian"],
+  "Santa Fe": ["Santa Fe","Rosario","Venado Tuerto","Reconquista","Rafaela","Santo Tome","Villa Constitucion","San Lorenzo","Esperanza","Casilda","Canada de Gomez","Firmat","Rufino","San Cristobal","Vera"],
+  "Santiago del Estero": ["Santiago del Estero","La Banda","Termas de Rio Hondo","Anatuya","Frias","Loreto","Monte Quemado","Quimili"],
+  "Tierra del Fuego": ["Ushuaia","Rio Grande","Tolhuin"],
+  "Tucuman": ["San Miguel de Tucuman","Tafi Viejo","Banda del Rio Sali","Concepcion","Yerba Buena","Alderetes","Aguilares","Monteros","Lules"]
+};
+
 (function () {
   // ── Aplicar colores desde config ──────────────────────────────
   const r = document.documentElement.style;
@@ -25,6 +52,30 @@
   document.getElementById('footer-email').textContent   = CONFIG.email;
   document.getElementById('footer-email').href          = 'mailto:' + CONFIG.email;
   document.getElementById('footer-year').textContent    = new Date().getFullYear();
+
+  // ── Selectores Provincia / Localidad ─────────────────────────
+  var selProv = document.getElementById('f-provincia');
+  var selLoc  = document.getElementById('f-localidad');
+
+  Object.keys(ARGENTINA).sort().forEach(function (prov) {
+    var opt = document.createElement('option');
+    opt.value = prov;
+    opt.textContent = prov;
+    selProv.appendChild(opt);
+  });
+
+  selProv.addEventListener('change', function () {
+    var ciudades = ARGENTINA[this.value] || [];
+    selLoc.innerHTML = '<option value="" disabled selected>Seleccioná localidad...</option>';
+    ciudades.forEach(function (ciudad) {
+      var opt = document.createElement('option');
+      opt.value = ciudad;
+      opt.textContent = ciudad;
+      selLoc.appendChild(opt);
+    });
+    selLoc.disabled = false;
+    selLoc.value = '';
+  });
 
   // ── Renderizar servicios ──────────────────────────────────────
   const servGrid = document.getElementById('services-grid');
@@ -88,27 +139,30 @@
 
     const get = function (id) { return document.getElementById(id).value.trim(); };
 
-    const nombre      = get('f-nombre');
-    const celular     = get('f-celular');
-    const barrio      = get('f-barrio');
-    const servicio    = get('f-servicio');
+    const nombre    = get('f-nombre');
+    const celular   = get('f-celular');
+    const provincia = get('f-provincia');
+    const localidad = get('f-localidad');
+    const servicio  = get('f-servicio');
     const descripcion = get('f-desc');
-    const urgencia    = get('f-urgencia');
-    const horario     = get('f-horario');
+    const urgencia  = get('f-urgencia');
+    const horario   = get('f-horario');
 
-    var b = String.fromCharCode(0x2022); // bullet: U+2022 (BMP, no surrogate needed)
+    var b = String.fromCharCode(0x2022); // bullet U+2022
 
     const lineas = [
       '*[ NUEVA SOLICITUD DE PRESUPUESTO ]*',
       '- - - - - - - - - - - - - - - - - -',
       b + ' *Nombre:* '    + nombre,
       b + ' *Celular:* '   + celular,
-      b + ' *Ubicacion:* ' + barrio,
+      b + ' *Provincia:* ' + provincia,
+      b + ' *Localidad:* ' + localidad,
       b + ' *Servicio:* '  + servicio,
       descripcion ? b + ' *Descripcion:* ' + descripcion : null,
-      b + ' *Urgencia:* '            + urgencia,
-      b + ' *Horario:* '             + horario,
+      b + ' *Urgencia:* '  + urgencia,
+      b + ' *Horario:* '   + horario,
       '- - - - - - - - - - - - - - - - - -',
+      '_Sitio web ZD_',
     ].filter(Boolean).join('\n');
 
     window.open(wpBase + '?text=' + encodeURIComponent(lineas), '_blank');
